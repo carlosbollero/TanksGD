@@ -6,7 +6,7 @@ extends KinematicBody2D
 # var b="textvar"
 var btn_left
 var btn_right
-var speed
+var vel = 2.5
 var orientacion
 
 func _ready():
@@ -17,7 +17,7 @@ func _ready():
 	
 	set_fixed_process(true)
 	
-	speed = 200
+
 
 
 func _fixed_process(delta):
@@ -25,29 +25,31 @@ func _fixed_process(delta):
 	btn_left = Input.is_action_pressed("btn_left")
 	btn_right = Input.is_action_pressed("btn_right")
 	
+	if is_colliding():
+		print("Collision with ", get_collider())
+	
 	if btn_left:
-		print("left")
+#		print("left")
 		if orientacion != "oeste":
 			orientacion = "oeste"
-			set_rot(-get_rot())
-		move(Vector2(-2.5, 0))
+			set_rot(PI/2)
+		move(Vector2(-vel, 0))
 	elif btn_right:
-		print("right")
+#		print("right")
 		if orientacion != "este":
 			orientacion = "este"
-			set_rot(-get_rot())
-		move(Vector2(2.5,0))
-
-	if Input.is_action_pressed("btn_up"):
-		print("up")
+			set_rot(3 * PI/2)
+		move(Vector2(vel,0))
+	elif Input.is_action_pressed("btn_up"):
+#		print("up")
 		if orientacion != "norte":
 			orientacion = "norte"
-			set_rot(-get_rot())
-		move(Vector2(0, -2.5))
+			set_rot(0)
+		move(Vector2(0, -vel))
 		
-	if Input.is_action_pressed("btn_down"):
-		print("down")
+	elif Input.is_action_pressed("btn_down"):
+#		print("down")
 		if orientacion != "sur":
 			orientacion = "sur"
-			set_rot(-get_rot())
-		move(Vector2(0, 2.5))
+			set_rot(PI)
+		move(Vector2(0, vel))
