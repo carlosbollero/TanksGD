@@ -6,18 +6,11 @@ extends KinematicBody2D
 # var b="textvar"
 var btn_left
 var btn_right
-var speed
+var vel = 200
 var orientacion
+var movimiento = Vector2()
+var sprite
 
-func _ready():
-	# Initialization here
-	orientacion = "este"
-	btn_left = Input.is_action_pressed("btn_left")
-	btn_right = Input.is_action_pressed("btn_right")
-	
-	set_fixed_process(true)
-	
-	speed = 200
 
 
 func _fixed_process(delta):
@@ -25,29 +18,47 @@ func _fixed_process(delta):
 	btn_left = Input.is_action_pressed("btn_left")
 	btn_right = Input.is_action_pressed("btn_right")
 	
-	if btn_left:
-		print("left")
-		if orientacion != "oeste":
-			orientacion = "oeste"
-			set_rot(-get_rot())
-		move(Vector2(-2.5, 0))
-	elif btn_right:
-		print("right")
-		if orientacion != "este":
-			orientacion = "este"
-			set_rot(-get_rot())
-		move(Vector2(2.5,0))
+	
+	if is_colliding():
+		print("Collision with ", get_collider().get_name())
+		var normal = get_collision_normal()
+		print(normal)
+		movimiento = normal.slide(movimiento)
+		move(movimiento)
+	
+	detect_movement()
+	move(movimiento * delta)
 
-	if Input.is_action_pressed("btn_up"):
-		print("up")
-		if orientacion != "norte":
-			orientacion = "norte"
-			set_rot(-get_rot())
-		move(Vector2(0, -2.5))
-		
-	if Input.is_action_pressed("btn_down"):
-		print("down")
-		if orientacion != "sur":
-			orientacion = "sur"
-			set_rot(-get_rot())
-		move(Vector2(0, 2.5))
+func detect_movement():
+	if btn_left:
+		if sprite.get_rot() != (PI/2):
+			sprite.set_rot(PI/2)
+		movimiento.x = -vel
+		movimiento.y = 0
+	elif btn_right:
+		if sprite.get_rot() != (3*PI/2):
+			sprite.set_rot(3*PI/2)
+		movimiento.x = vel
+		movimiento.y = 0
+	elif Input.is_action_pressed("btn_up"):
+		if sprite.get_rot() != 0:
+			sprite.set_rot(0)
+		movimiento.y = -vel
+		movimiento.x = 0
+	elif Input.is_action_pressed("btn_down"):
+		if sprite.get_rot() != PI:
+			sprite.set_rot(PI)
+		movimiento.y = vel
+		movimiento.x = 0
+	else:
+		movimiento = Vector2(0,0)
+
+func _ready():
+	# Initialization here
+	orientacion = "este"
+	btn_left = Input.is_action_pressed("btn_left")
+	btn_right = Input.is_action_pressed("btn_right")
+	
+	sprite = get_node("tanque_sprite")
+	
+	set_fixed_process(true)

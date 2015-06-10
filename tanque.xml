@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="6" version="1.1" version_name="Godot Engine v1.1.stable.d3b42e41b0">
+<resource_file type="PackedScene" subresource_count="5" version="1.1" version_name="Godot Engine v1.1.stable.d3b42e41b0">
 	<ext_resource path="res://tanque/tanque.gd" type="Script"></ext_resource>
 	<ext_resource path="res://res/tankBase.png" type="Texture"></ext_resource>
-	<ext_resource path="res://tanque/rotor.gd" type="Script"></ext_resource>
 	<ext_resource path="res://res/tankTurret.png" type="Texture"></ext_resource>
 	<resource type="ConvexPolygonShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
-		<vector2_array name="points" len="8"> 			-14, -12, -12, -14, 12, -14, 14, -12, 14, 12, 12, 14, -12, 14, -14, 12 </vector2_array>
+		<vector2_array name="points" len="8"> 			14, 11, 11, 14, -11, 14, -14, 11, -14, -11, -11, -14, 11, -14, 14, -11 </vector2_array>
 
 	</resource>
 	<main_resource>
@@ -16,7 +15,7 @@
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 			<string> "names" </string>
-			<string_array  len="45">
+			<string_array  len="41">
 				<string> "Node2D" </string>
 				<string> "_import_path" </string>
 				<string> "visibility/visible" </string>
@@ -40,6 +39,7 @@
 				<string> "collision/mask" </string>
 				<string> "collision/margin" </string>
 				<string> "script/script" </string>
+				<string> "tanque_sprite" </string>
 				<string> "Sprite" </string>
 				<string> "texture" </string>
 				<string> "centered" </string>
@@ -52,40 +52,35 @@
 				<string> "modulate" </string>
 				<string> "region" </string>
 				<string> "region_rect" </string>
+				<string> "torreta_sprite" </string>
 				<string> "CollisionPolygon2D" </string>
 				<string> "build_mode" </string>
 				<string> "polygon" </string>
 				<string> "trigger" </string>
-				<string> "torreta" </string>
-				<string> "StaticBody2D" </string>
-				<string> "constant_linear_velocity" </string>
-				<string> "constant_angular_velocity" </string>
-				<string> "friction" </string>
-				<string> "bounce" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 6 </int>
+			<int> 5 </int>
 			<string> "nodes" </string>
-			<int_array  len="250"> 				-1, -1, 0, 0, -1, 11, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 1, 11, 8, 0, 0, 0, 13, 12, -1, 19, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 9, 7, 10, 8, 6, 9, 7, 10, 1, 14, 11, 15, 3, 16, 12, 17, 13, 18, 11, 19, 3, 20, 3, 21, 14, 22, 15, 0, 1, 0, 23, 23, -1, 21, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 9, 7, 5, 8, 6, 9, 7, 10, 1, 24, 16, 25, 1, 26, 9, 27, 11, 28, 11, 29, 3, 30, 3, 31, 7, 32, 17, 33, 11, 34, 18, 0, 1, 0, 35, 35, -1, 13, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 9, 7, 5, 8, 6, 9, 7, 10, 1, 36, 7, 37, 19, 38, 11, 0, 1, 0, 40, 39, -1, 19, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 9, 7, 5, 8, 6, 9, 7, 10, 1, 14, 11, 15, 7, 19, 3, 20, 3, 41, 9, 42, 5, 43, 2, 44, 5, 22, 20, 0, 4, 0, 23, 23, -1, 21, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 9, 7, 5, 8, 6, 9, 7, 10, 1, 24, 21, 25, 1, 26, 9, 27, 11, 28, 11, 29, 3, 30, 3, 31, 7, 32, 17, 33, 11, 34, 18, 0 </int_array>
+			<int_array  len="207"> 				-1, -1, 0, 0, -1, 11, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 1, 11, 8, 0, 0, 0, 13, 12, -1, 19, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 1, 14, 9, 15, 3, 16, 10, 17, 11, 18, 9, 19, 3, 20, 3, 21, 12, 22, 13, 0, 1, 0, 24, 23, -1, 22, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 4, 7, 14, 8, 6, 9, 7, 10, 1, 25, 15, 26, 1, 27, 4, 28, 9, 29, 9, 30, 3, 31, 3, 32, 7, 33, 16, 34, 9, 35, 17, 11, 18, 0, 2, 0, 24, 36, -1, 21, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 1, 25, 19, 26, 1, 27, 4, 28, 9, 29, 9, 30, 3, 31, 3, 32, 7, 33, 16, 34, 9, 35, 17, 0, 1, 0, 37, 37, -1, 13, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 1, 38, 7, 39, 20, 40, 9, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="22" shared="false">
+			<array  len="21" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
 				<int> 1 </int>
-				<vector2> 32, 32 </vector2>
+				<vector2> 0, 0 </vector2>
 				<real> 0 </real>
 				<vector2> 1, 1 </vector2>
 				<int> 0 </int>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
 						<string> "2D" </string>
 						<dictionary  shared="false">
 							<string> "ofs" </string>
-							<vector2> -11.6171, -25.6185 </vector2>
+							<vector2> -79.6698, -42.2717 </vector2>
 							<string> "snap_grid" </string>
 							<bool> False </bool>
 							<string> "snap_offset" </string>
@@ -105,7 +100,7 @@
 							<string> "snap_step" </string>
 							<vector2> 10, 10 </vector2>
 							<string> "zoom" </string>
-							<real> 7.022681 </real>
+							<real> 10.585567 </real>
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
@@ -202,7 +197,7 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 1 </int>
+							<int> 0 </int>
 							<string> "sources" </string>
 							<array  len="2" shared="false">
 								<string> "res://tanque/rotor.gd" </string>
@@ -218,19 +213,21 @@
 						<int> 0 </int>
 					</dictionary>
 				</dictionary>
-				<vector2> 0, 0 </vector2>
-				<real> 270 </real>
 				<bool> False </bool>
 				<resource  resource_type="Shape2D" path="local://1">  </resource>
 				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
 				<real> 0.08 </real>
 				<resource  resource_type="Script" path="res://tanque/tanque.gd">  </resource>
+				<real> 270 </real>
 				<resource  resource_type="Texture" path="res://res/tankBase.png">  </resource>
 				<color> 1, 1, 1, 1 </color>
 				<rect2> 0, 0, 0, 0 </rect2>
-				<vector2_array  len="8"> 					-12, -14, 12, -14, 14, -12, 14, 12, 12, 14, -12, 14, -14, 12, -14, -12 </vector2_array>
-				<resource  resource_type="Script" path="res://tanque/rotor.gd">  </resource>
+				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
+				</dictionary>
 				<resource  resource_type="Texture" path="res://res/tankTurret.png">  </resource>
+				<vector2_array  len="8"> 					-11, -14, 11, -14, 14, -11, 14, 11, 11, 14, -11, 14, -14, 11, -14, -11 </vector2_array>
 			</array>
 			<string> "version" </string>
 			<int> 1 </int>
